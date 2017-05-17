@@ -18,11 +18,11 @@ describe Field do
 
   describe '#taken' do
     it 'is false on initialization' do
-      expect(field.taken).to eq false
+      expect(field.taken).to be_falsey
     end
     it 'can be set to true' do
       field.taken = true
-      expect(field.taken).to eq true
+      expect(field.taken).to be_truthy
     end
   end
 

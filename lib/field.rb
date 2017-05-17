@@ -9,6 +9,4 @@ class Field
     @taken = false
   end
 
-
-
 end
