@@ -30,13 +30,9 @@ describe Game do
 
   describe '#winner?' do
     it 'returns true if current player has whole row' do
-      # game.board[x-1][y-1] =
-      game.take(1,1)
-      game.take(2,1)
-      game.take(1,2)
-      game.take(2,2)
-      game.take(1,3)
-      game.switch_player
+      game.board[0][0] = 'x'
+      game.board[0][1] = 'x'
+      game.board[0][2] = 'x'
       expect(game.winner?).to be_truthy
     end
   end
