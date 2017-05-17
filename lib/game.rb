@@ -18,7 +18,7 @@ class Game
   def take(x,y)
     raise 'cell already taken' if board.cell_taken?(x,y)
     board.take_cell(x,y,current_player)
-    winner?(current_player) ? puts("#{current_player} wins!") : switch_player
+    board.wins?(current_player) ? puts("#{current_player} wins!") : switch_player
   end
 
   def winner?(player)

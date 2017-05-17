@@ -17,6 +17,10 @@ class Board
     grid[x-1][y-1] = player
   end
 
+  def wins?(player)
+    row_win?(player) || column_win?(player) || diagonal_win?(player) 
+  end
+
   def row_win?(player)
     occupied_row?(row_1, player) || occupied_row?(row_2, player) || occupied_row?(row_3, player)
   end
