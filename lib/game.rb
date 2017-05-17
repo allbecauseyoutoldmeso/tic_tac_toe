@@ -25,9 +25,7 @@ class Game
   end
 
   def winner?
-    if row_win? || column_win? || diagonal_win?
-      true
-    end
+    true if row_win? || column_win? || diagonal_win?
   end
 
   def row_win?
