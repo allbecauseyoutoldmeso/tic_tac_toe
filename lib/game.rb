@@ -20,7 +20,7 @@ class Game
   end
 
   def take(x,y)
-    raise 'cell already taken' if board.grid[x-1][y-1] != ''
+    raise 'cell already taken' if board.cell_taken?(x,y)
     board.grid[x-1][y-1] = current_player
     winner? ? puts("#{current_player} wins!") : switch_player
   end
