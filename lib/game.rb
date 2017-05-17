@@ -19,12 +19,9 @@ class Game
   end
 
   def take(x,y)
-    if @board[x-1][y-1] == ''
-      @board[x-1][y-1] = @current_player
-      switch_player
-    else
-      raise 'cell already taken'
-    end
+    raise 'cell already taken' if @board[x-1][y-1] != ''
+    @board[x-1][y-1] = @current_player
+    winner? ? puts("#{@current_player} wins!") : switch_player
   end
 
   def winner?
