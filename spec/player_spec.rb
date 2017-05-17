@@ -10,11 +10,4 @@ describe Player do
     end
   end
 
-  describe '#take' do
-    it 'adds the selected field to the player\'s fields' do
-      player.take(1,3)
-      expect(player.fields.length).to eq 1 
-    end
-  end
-
 end

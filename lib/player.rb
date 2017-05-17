@@ -6,9 +6,5 @@ class Player
     @fields = []
   end
 
-  def take(row, column)
-    field = Field.new(row, column)
-    fields.push field
-  end
 
 end

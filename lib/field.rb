@@ -1,7 +1,7 @@
 class Field
 
-  attr_reader :row, :column, :taken
-  attr_writer :taken
+  attr_reader :row, :column
+  attr_accessor :taken
 
   def initialize(row, column)
     @row = row
