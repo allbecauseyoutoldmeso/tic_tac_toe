@@ -28,7 +28,7 @@ class Game
   end
 
   def winner?
-    if row_win? || column_win?
+    if row_win? || column_win? || diagonal_win?
       true
     end
   end
@@ -38,7 +38,11 @@ class Game
   end
 
   def column_win?
-    [@row_1[0], @row_2[0], @row_3[0]].all? { |cell| cell = @current_player }
+    [@row_1[0], @row_2[0], @row_3[0]].all? { |cell| cell == @current_player } || [@row_1[1], @row_2[1], @row_3[1]].all? { |cell| cell == @current_player } || [@row_1[2], @row_2[2], @row_3[2]].all? { |cell| cell == @current_player }
+  end
+
+  def diagonal_win?
+    [@row_1[0], @row_2[1], @row_3[2]].all? { |cell| cell == @current_player } || [@row_1[2], @row_2[1], @row_3[0]].all? { |cell| cell == @current_player }
   end
 
 end
