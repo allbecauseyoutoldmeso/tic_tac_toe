@@ -35,6 +35,12 @@ describe Game do
       game.board[0][2] = 'x'
       expect(game.winner?).to be_truthy
     end
+    it 'returns true if current player has whole column' do
+      game.board[0][0] = 'x'
+      game.board[1][0] = 'x'
+      game.board[2][0] = 'x'
+      expect(game.winner?).to be_truthy
+    end
   end
 
 end

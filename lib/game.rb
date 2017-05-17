@@ -28,7 +28,7 @@ class Game
   end
 
   def winner?
-    if row_win?
+    if row_win? || column_win?
       true
     end
   end
@@ -37,5 +37,8 @@ class Game
     @row_1.all? { |cell| cell == @current_player } || @row_1.all? { |cell| cell == @current_player } || @row_1.all? { |cell| cell == @current_player }
   end
 
+  def column_win?
+    [@row_1[0], @row_2[0], @row_3[0]].all? { |cell| cell = @current_player }
+  end
 
 end
