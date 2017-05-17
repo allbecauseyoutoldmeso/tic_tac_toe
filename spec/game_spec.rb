@@ -29,23 +29,23 @@ describe Game do
   end
 
   describe '#winner?' do
-    it 'returns true if current player has whole row' do
+    it 'returns true if player has whole row' do
       game.board.grid[0][0] = 'x'
       game.board.grid[0][1] = 'x'
       game.board.grid[0][2] = 'x'
-      expect(game.winner?).to be_truthy
+      expect(game.winner?(game.current_player)).to be_truthy
     end
-    it 'returns true if current player has whole column' do
+    it 'returns true if player has whole column' do
       game.board.grid[0][2] = 'x'
       game.board.grid[1][2] = 'x'
       game.board.grid[2][2] = 'x'
-      expect(game.winner?).to be_truthy
+      expect(game.winner?(game.current_player)).to be_truthy
     end
-    it 'returns true if current player has whole diagonal' do
+    it 'returns true if player has whole diagonal' do
       game.board.grid[0][0] = 'x'
       game.board.grid[1][1] = 'x'
       game.board.grid[2][2] = 'x'
-      expect(game.winner?).to be_truthy
+      expect(game.winner?(game.current_player)).to be_truthy
     end
   end
 
