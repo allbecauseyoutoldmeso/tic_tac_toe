@@ -20,7 +20,7 @@ describe Game do
   describe '#take' do
     it 'sets a cell to the current player' do
       game.take(1,1)
-      expect(game.board[0][0]).to eq 'x'
+      expect(game.board.grid[0][0]).to eq 'x'
     end
     it 'raises an error if try to take a cell that is already taken' do
       game.take(1,1)
@@ -30,21 +30,21 @@ describe Game do
 
   describe '#winner?' do
     it 'returns true if current player has whole row' do
-      game.board[0][0] = 'x'
-      game.board[0][1] = 'x'
-      game.board[0][2] = 'x'
+      game.board.grid[0][0] = 'x'
+      game.board.grid[0][1] = 'x'
+      game.board.grid[0][2] = 'x'
       expect(game.winner?).to be_truthy
     end
     it 'returns true if current player has whole column' do
-      game.board[0][2] = 'x'
-      game.board[1][2] = 'x'
-      game.board[2][2] = 'x'
+      game.board.grid[0][2] = 'x'
+      game.board.grid[1][2] = 'x'
+      game.board.grid[2][2] = 'x'
       expect(game.winner?).to be_truthy
     end
     it 'returns true if current player has whole diagonal' do
-      game.board[0][0] = 'x'
-      game.board[1][1] = 'x'
-      game.board[2][2] = 'x'
+      game.board.grid[0][0] = 'x'
+      game.board.grid[1][1] = 'x'
+      game.board.grid[2][2] = 'x'
       expect(game.winner?).to be_truthy
     end
   end

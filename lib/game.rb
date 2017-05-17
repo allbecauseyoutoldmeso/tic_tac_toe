@@ -1,17 +1,18 @@
-require_relative 'field'
+require_relative 'board'
 require_relative 'player'
 
 class Game
 
-  attr_reader :board, :row_1, :row_2, :row_3
+  attr_reader :board
   attr_accessor :current_player
 
   def initialize
     @current_player = 'x'
-    @row_1 = ['', '', '']
-    @row_2 = ['', '', '']
-    @row_3 = ['', '', '']
-    @board = [@row_1, @row_2, @row_3]
+    @board = Board.new
+    # @row_1 = ['', '', '']
+    # @row_2 = ['', '', '']
+    # @row_3 = ['', '', '']
+    # @board = [@row_1, @row_2, @row_3]
   end
 
   def switch_player
@@ -19,8 +20,8 @@ class Game
   end
 
   def take(x,y)
-    raise 'cell already taken' if @board[x-1][y-1] != ''
-    @board[x-1][y-1] = current_player
+    raise 'cell already taken' if board.grid[x-1][y-1] != ''
+    board.grid[x-1][y-1] = current_player
     winner? ? puts("#{current_player} wins!") : switch_player
   end
 
@@ -29,7 +30,7 @@ class Game
   end
 
   def row_win?
-    occupied_row?(row_1) || occupied_row?(row_2) || occupied_row?(row_3)
+    occupied_row?(board.row_1) || occupied_row?(board.row_2) || occupied_row?(board.row_3)
   end
 
   def occupied_row?(row)
@@ -41,11 +42,11 @@ class Game
   end
 
   def occupied_column?(column)
-    [row_1[column], row_2[column], row_3[column]].all? { |cell| cell == current_player }
+    [board.row_1[column], board.row_2[column], board.row_3[column]].all? { |cell| cell == current_player }
   end
 
   def diagonal_win?
-    [row_1[0], row_2[1], row_3[2]].all? { |cell| cell == current_player } || [row_1[2], row_2[1], row_3[0]].all? { |cell| cell == current_player }
+    [board.row_1[0], board.row_2[1], board.row_3[2]].all? { |cell| cell == current_player } || [board.row_1[2], board.row_2[1], board.row_3[0]].all? { |cell| cell == current_player }
   end
 
 end

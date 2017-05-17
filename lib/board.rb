@@ -1,15 +1,13 @@
 class Board
 
-  attr_reader :scale
+  attr_reader :row_1, :row_2, :row_3, :grid
 
-  def initialize(scale)
-    @scale = scale
+  def initialize
+    @row_1 = ['', '', '']
+    @row_2 = ['', '', '']
+    @row_3 = ['', '', '']
+    @grid = [@row_1, @row_2, @row_3]
   end
 
-  def generate_coordinates
-    coordinates = []
-    x=1 ; scale.times { y = 0 ; scale.times { coordinates.push [x,y+=1] } ; x+=1 }
-    coordinates
-  end
 
 end
