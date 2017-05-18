@@ -3,18 +3,18 @@ require_relative 'player'
 
 class Game
 
-  attr_reader :board, :ex, :oh
-  attr_accessor :current_player
+  attr_reader :cross, :nought
+  attr_accessor :current_player, :board
 
   def initialize
-    @ex = Player.new('x')
-    @oh = Player.new('o')
-    @current_player = @ex
+    @cross = Player.new('x')
+    @nought = Player.new('o')
+    @current_player = @cross
     @board = Board.new
   end
 
   def switch_player
-    current_player == ex ? self.current_player = oh : self.current_player = ex
+    current_player == cross ? self.current_player = nought : self.current_player = cross
   end
 
   def take(row, column)
@@ -22,8 +22,10 @@ class Game
     if board.wins?(current_player.symbol)
       puts("#{current_player.symbol} wins!")
       current_player.gain_points(1)
+      self.board = Board.new
     elsif board.game_over?
       puts('draw!')
+      self.board = Board.new
     else
       switch_player
     end
