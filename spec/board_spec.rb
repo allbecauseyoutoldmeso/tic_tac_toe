@@ -7,13 +7,13 @@ describe Board do
   describe '#cell_taken' do
     it 'is true if cell is taken' do
       board.grid[0][0] = 'x'
-      expect(board.cell_taken?(1,1)).to be_truthy
+      expect(board.cell_taken?(0,0)).to be_truthy
     end
   end
 
   describe '#take_cell' do
     it 'sets a cell to x or o' do
-      board.take_cell(1,1,'x')
+      board.take_cell(0,0,'x')
       expect(board.grid[0][0]).to eq 'x'
     end
   end

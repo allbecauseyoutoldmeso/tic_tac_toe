@@ -1,28 +1,28 @@
 class Board
 
-  attr_reader :row_1, :row_2, :row_3, :grid
+  attr_reader :row_0, :row_1, :row_2, :grid
 
   def initialize
+    @row_0 = ['', '', '']
     @row_1 = ['', '', '']
     @row_2 = ['', '', '']
-    @row_3 = ['', '', '']
-    @grid = [@row_1, @row_2, @row_3]
+    @grid = [@row_0, @row_1, @row_2]
   end
 
   def cell_taken?(x,y)
-    grid[x-1][y-1] != ''
+    grid[x][y] != ''
   end
 
   def take_cell(x,y,player)
-    grid[x-1][y-1] = player
+    grid[x][y] = player
   end
 
   def wins?(player)
-    row_win?(player) || column_win?(player) || diagonal_win?(player) 
+    row_win?(player) || column_win?(player) || diagonal_win?(player)
   end
 
   def row_win?(player)
-    occupied_row?(row_1, player) || occupied_row?(row_2, player) || occupied_row?(row_3, player)
+    occupied_row?(row_0, player) || occupied_row?(row_1, player) || occupied_row?(row_2, player)
   end
 
   def occupied_row?(row, player)
@@ -34,11 +34,11 @@ class Board
   end
 
   def occupied_column?(column, player)
-    [row_1[column], row_2[column], row_3[column]].all? { |cell| cell == player }
+    [row_0[column], row_1[column], row_1[column]].all? { |cell| cell == player }
   end
 
   def diagonal_win?(player)
-    [row_1[0], row_2[1], row_3[2]].all? { |cell| cell == player } || [row_1[2], row_2[1], row_3[0]].all? { |cell| cell == player }
+    [row_0[0], row_1[1], row_2[2]].all? { |cell| cell == player } || [row_0[2], row_1[1], row_2[0]].all? { |cell| cell == player }
   end
 
 
