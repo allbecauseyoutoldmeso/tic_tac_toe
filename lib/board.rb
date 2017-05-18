@@ -26,12 +26,12 @@ class Board
   end
 
   def row_win?(player)
-    occupied_row?(grid[0], player) || occupied_row?(grid[1], player) || occupied_row?(grid[2], player)
+    grid.any? { |row| row.all? { |cell| cell == player } }
   end
 
-  def occupied_row?(row, player)
-    row.all? { |cell| cell == player }
-  end
+  # def occupied_row?(row, player)
+  #   row.all? { |cell| cell == player }
+  # end
 
   def column_win?(player)
     occupied_column?(0, player) || occupied_column?(1, player) || occupied_column?(2, player)
