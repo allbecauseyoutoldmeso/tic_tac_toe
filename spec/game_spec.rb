@@ -35,6 +35,17 @@ describe Game do
       game.board.grid[0][1] = 'x'
       expect { game.take(0,2) }.to output("x wins!\n").to_stdout
     end
+    it 'prints a draw message if neither player wins' do
+      game.board.grid[0][0] = 'x'
+      game.board.grid[0][1] = 'x'
+      game.board.grid[0][2] = 'o'
+      game.board.grid[1][0] = 'o'
+      game.board.grid[1][1] = 'o'
+      game.board.grid[1][2] = 'x'
+      game.board.grid[2][0] = 'o'
+      game.board.grid[2][1] = 'x'
+      expect { game.take(2,2) }.to output("draw!\n").to_stdout
+    end
   end
 
 

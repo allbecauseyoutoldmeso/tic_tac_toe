@@ -22,6 +22,8 @@ class Game
     if board.wins?(current_player.symbol)
       puts("#{current_player.symbol} wins!")
       current_player.gain_points(1)
+    elsif board.game_over?
+      puts('draw!')
     else
       switch_player
     end
