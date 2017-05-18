@@ -46,6 +46,18 @@ describe Game do
       game.board.grid[2][1] = 'x'
       expect { game.take(2,2) }.to output("draw!\n").to_stdout
     end
+    it 'starts a new game if game over' do
+      game.board.grid[0][0] = 'x'
+      game.board.grid[0][1] = 'x'
+      game.take(0,2)
+      expect(game.board.grid.all? { |row| row.all? { |cell| cell == '' } }).to be_truthy
+    end
+    it 'allocates points to the winning player' do
+      game.board.grid[0][0] = 'x'
+      game.board.grid[0][1] = 'x'
+      game.take(0,2)
+      expect(game.cross.points).to eq 1
+    end
   end
 
 

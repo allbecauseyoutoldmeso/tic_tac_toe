@@ -17,7 +17,7 @@ class Board
     grid[row][column] = player
   end
 
-  def game_over?
+  def full?
     grid.all? { |row| row.all? { |cell| cell != '' } }
   end
 

@@ -43,10 +43,10 @@ describe Board do
     end
   end
 
-  describe '#game_over?' do
+  describe '#full?' do
     it 'returns true if all cells are filled' do
       board.grid.each { |row| row.each { |cell| cell.replace('x') } }
-      expect(board.game_over?).to be_truthy
+      expect(board.full?).to be_truthy
     end
   end
 

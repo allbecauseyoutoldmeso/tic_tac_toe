@@ -19,16 +19,30 @@ class Game
 
   def take(row, column)
     board.take_cell(row, column, current_player.symbol)
-    if board.wins?(current_player.symbol)
-      puts("#{current_player.symbol} wins!")
-      current_player.gain_points(1)
-      self.board = Board.new
-    elsif board.game_over?
-      puts('draw!')
-      self.board = Board.new
+    if board.wins?(current_player.symbol) || board.full?
+      end_game
     else
       switch_player
     end
+  end
+
+  def end_game
+    if board.wins?(current_player.symbol)
+      winning_game
+    else
+      puts('draw!')
+    end
+      restart_game  
+  end
+
+  def winning_game
+    puts("#{current_player.symbol} wins!")
+    current_player.gain_points(1)
+  end
+
+  def restart_game
+    self.board = Board.new
+    switch_player
   end
 
 end
