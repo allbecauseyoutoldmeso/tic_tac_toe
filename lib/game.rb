@@ -21,8 +21,4 @@ class Game
     board.wins?(current_player) ? puts("#{current_player} wins!") : switch_player
   end
 
-  def winner?(player)
-    board.row_win?(player) || board.column_win?(player) || board.diagonal_win?(player)
-  end
-
 end

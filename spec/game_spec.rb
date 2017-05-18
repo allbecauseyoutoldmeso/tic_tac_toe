@@ -26,8 +26,17 @@ describe Game do
       game.take(1,1)
       expect { game.take(1,1) }.to raise_error 'cell already taken'
     end
+    it 'switches the player if nobody wins' do
+      game.take(1,1)
+      expect(game.current_player).to eq 'o'
+    end
+    it 'prints a win message if a player wins' do
+      game.board.grid[0][0] = 'x'
+      game.board.grid[0][1] = 'x'
+      expect { game.take(1,3) }.to output("x wins!\n").to_stdout
+    end
   end
 
-  
+
 
 end
