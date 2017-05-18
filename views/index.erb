@@ -1,7 +1,39 @@
-<p>noughts & crosses</p>
+<html>
 
-<p>x: <%=@game.cross.points%></p>
+  <head>
+    <title>noughts & crosses</title>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  </head>
 
-<p>o: <%=@game.nought.points%></p>
+  <body>
 
-<p><%=@game.board.grid.to_s%></p>
+    <p>noughts & crosses</p>
+
+    <p id='cross-points'>x: <%=@game.cross.points%></p>
+
+    <p id='nought-'>o: <%=@game.nought.points%></p>
+
+    <p><span id='turn'><%=@game.current_player.symbol%></span>'s turn</p>
+
+    <!-- <p id='grid'><%=@game.board.grid.to_s%></p> -->
+
+    <p><button id='00'>0,0</button><button id='01'>0,1</button><button id='02'>0,2</button></p>
+    <p><button id='10'>1,0</button><button id='11'>1,1</button><button id='12'>1,2</button></p>
+    <p><button id='20'>2,0</button><button id='21'>2,1</button><button id='22'>2,2</button></p>
+
+
+
+    <script>
+      $(document).ready(function(){
+        $('#00').on('click', function() {
+          <%@game.take(0,0)%>;
+          var symbol =  <%= @game.current_player.points %>;
+          $('#00').text(symbol);
+
+        });
+      });
+    </script>
+
+  </body>
+
+</html>

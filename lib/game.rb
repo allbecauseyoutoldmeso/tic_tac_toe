@@ -17,7 +17,7 @@ class Game
     current_player == cross ? self.current_player = nought : self.current_player = cross
   end
 
-  def take(row, column)
+  def play(row, column)
     board.take_cell(row, column, current_player.symbol)
     if board.wins?(current_player.symbol) || board.full?
       end_game
@@ -32,7 +32,7 @@ class Game
     else
       puts('draw!')
     end
-      restart_game  
+      restart_game
   end
 
   def winning_game
