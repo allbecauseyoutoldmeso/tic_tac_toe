@@ -18,9 +18,13 @@ class Game
   end
 
   def take(row, column)
-    raise 'cell already taken' if board.cell_taken?(row, column)
     board.take_cell(row, column, current_player.symbol)
-    board.wins?(current_player.symbol) ? puts("#{current_player.symbol} wins!") : switch_player
+    if board.wins?(current_player.symbol)
+      puts("#{current_player.symbol} wins!")
+      current_player.gain_points(1)
+    else
+      switch_player
+    end
   end
 
 end

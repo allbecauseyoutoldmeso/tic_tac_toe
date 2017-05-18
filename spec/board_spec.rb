@@ -16,6 +16,10 @@ describe Board do
       board.take_cell(0,0,'x')
       expect(board.grid[0][0]).to eq 'x'
     end
+    it 'raises an error if cell is taken' do
+      board.take_cell(0,0,'x')
+      expect { board.take_cell(0,0,'o') }.to raise_error 'cell already taken'
+    end
   end
 
   describe '#wins?' do
@@ -36,6 +40,13 @@ describe Board do
       board.grid[1][1] = 'x'
       board.grid[2][2] = 'x'
       expect(board.wins?('x')).to be_truthy
+    end
+  end
+
+  describe '#game_over?' do
+    it 'returns true if all cells are filled' do
+      board.grid.each { |row| row.each { |cell| cell.replace('x') } }
+      expect(board.game_over?).to be_truthy
     end
   end
 

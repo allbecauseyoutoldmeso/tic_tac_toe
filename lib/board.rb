@@ -13,7 +13,12 @@ class Board
   end
 
   def take_cell(row, column, player)
+    raise 'cell already taken' if cell_taken?(row, column)
     grid[row][column] = player
+  end
+
+  def game_over?
+    grid.all? { |row| row.all? { |cell| cell != '' } }
   end
 
   def wins?(player)
