@@ -8,12 +8,12 @@ class Board
              ['', '', '']]
   end
 
-  def cell_taken?(x,y)
-    grid[x][y] != ''
+  def cell_taken?(row, column)
+    grid[row][column] != ''
   end
 
-  def take_cell(x,y,player)
-    grid[x][y] = player
+  def take_cell(row, column, player)
+    grid[row][column] = player
   end
 
   def wins?(player)

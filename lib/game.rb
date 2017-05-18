@@ -3,22 +3,24 @@ require_relative 'player'
 
 class Game
 
-  attr_reader :board
+  attr_reader :board, :ex, :oh
   attr_accessor :current_player
 
   def initialize
-    @current_player = 'x'
+    @ex = Player.new('x')
+    @oh = Player.new('o')
+    @current_player = @ex
     @board = Board.new
   end
 
   def switch_player
-    current_player == 'o' ? self.current_player = 'x' : self.current_player = 'o'
+    current_player == ex ? self.current_player = oh : self.current_player = ex
   end
 
-  def take(x,y)
-    raise 'cell already taken' if board.cell_taken?(x,y)
-    board.take_cell(x,y,current_player)
-    board.wins?(current_player) ? puts("#{current_player} wins!") : switch_player
+  def take(row, column)
+    raise 'cell already taken' if board.cell_taken?(row, column)
+    board.take_cell(row, column, current_player.symbol)
+    board.wins?(current_player.symbol) ? puts("#{current_player.symbol} wins!") : switch_player
   end
 
 end

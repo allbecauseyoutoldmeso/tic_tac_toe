@@ -6,14 +6,14 @@ describe Game do
 
   describe '#current_player' do
     it 'is initially x' do
-      expect(game.current_player).to eq 'x'
+      expect(game.current_player.symbol).to eq 'x'
     end
   end
 
   describe '#switch_player' do
     it 'changes the player' do
       game.switch_player
-      expect(game.current_player).to eq 'o'
+      expect(game.current_player.symbol).to eq 'o'
     end
   end
 
@@ -28,7 +28,7 @@ describe Game do
     end
     it 'switches the player if nobody wins' do
       game.take(0,0)
-      expect(game.current_player).to eq 'o'
+      expect(game.current_player.symbol).to eq 'o'
     end
     it 'prints a win message if a player wins' do
       game.board.grid[0][0] = 'x'
