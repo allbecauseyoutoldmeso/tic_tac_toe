@@ -4,6 +4,14 @@ describe Board do
 
   subject(:board) { described_class.new(3) }
 
+  describe '#grid' do
+    it 'can be initialized with a specified size' do
+      expect(board.grid).to eq [['','',''],
+                                ['','',''],
+                                ['','','']]
+    end
+  end
+
   describe '#cell_taken' do
     it 'is true if cell is taken' do
       board.grid[0][0] = 'x'

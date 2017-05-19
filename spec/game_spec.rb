@@ -2,7 +2,7 @@ require 'game'
 
 describe Game do
 
-  subject(:game) { described_class.new }
+  subject(:game) { described_class.new(3) }
 
   describe '#current_player' do
     it 'is initially x' do

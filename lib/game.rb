@@ -3,14 +3,15 @@ require_relative 'player'
 
 class Game
 
-  attr_reader :cross, :nought
+  attr_reader :cross, :nought, :board_size
   attr_accessor :current_player, :board
 
-  def initialize
+  def initialize(board_size)
     @cross = Player.new('x')
     @nought = Player.new('o')
     @current_player = @cross
-    @board = Board.new(3)
+    @board_size = board_size
+    @board = Board.new(board_size)
   end
 
   def switch_player
@@ -45,7 +46,7 @@ class Game
   end
 
   def restart_game
-    self.board = Board.new(3)
+    self.board = Board.new(board_size)
     switch_player
   end
 

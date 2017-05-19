@@ -1,10 +1,11 @@
 class Board
 
-  attr_reader :grid, :size
+  attr_reader :grid, :max
 
   def initialize(size)
-    @size = size
-    @grid = [Array.new(size, ''), Array.new(size, ''), Array.new(size, '')]
+    @grid = []
+    size.times { @grid.push Array.new(size,'') }
+    @max = size-1
   end
 
   def cell_taken?(row, column)
@@ -29,11 +30,11 @@ class Board
   end
 
   def column_win?(symbol)
-    (0..size).to_a.any? { |column| grid.all? { |row| row[column] == symbol } }
+    (0..max).to_a.any? { |column| grid.all? { |row| row[column] == symbol } }
   end
 
   def diagonal_win?(symbol)
-    [grid[0][0], grid[1][1], grid[2][2]].all? { |cell| cell == symbol } || [grid[0][2], grid[1][1], grid[2][0]].all? { |cell| cell == symbol }
+    (0..max).collect { |n| grid[n][n] }.all? { |cell| cell == symbol } || (0..max).collect { |n| grid[n][max-n] }.all? { |cell| cell == symbol }
   end
 
 
