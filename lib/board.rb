@@ -2,10 +2,8 @@ class Board
 
   attr_reader :grid
 
-  def initialize
-    @grid = [['', '', ''],
-             ['', '', ''],
-             ['', '', '']]
+  def initialize(num)
+    @grid = [Array.new(num, ''), Array.new(num, ''), Array.new(num, '')]
   end
 
   def cell_taken?(row, column)

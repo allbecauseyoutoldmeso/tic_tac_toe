@@ -2,7 +2,7 @@ require 'board'
 
 describe Board do
 
-  subject(:board) { described_class.new }
+  subject(:board) { described_class.new(3) }
 
   describe '#cell_taken' do
     it 'is true if cell is taken' do

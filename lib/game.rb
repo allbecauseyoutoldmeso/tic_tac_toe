@@ -10,7 +10,7 @@ class Game
     @cross = Player.new('x')
     @nought = Player.new('o')
     @current_player = @cross
-    @board = Board.new
+    @board = Board.new(3)
   end
 
   def switch_player
@@ -45,7 +45,7 @@ class Game
   end
 
   def restart_game
-    self.board = Board.new
+    self.board = Board.new(3)
     switch_player
   end
 
