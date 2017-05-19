@@ -1,9 +1,10 @@
 class Board
 
-  attr_reader :grid
+  attr_reader :grid, :size
 
-  def initialize(num)
-    @grid = [Array.new(num, ''), Array.new(num, ''), Array.new(num, '')]
+  def initialize(size)
+    @size = size
+    @grid = [Array.new(size, ''), Array.new(size, ''), Array.new(size, '')]
   end
 
   def cell_taken?(row, column)
@@ -28,7 +29,7 @@ class Board
   end
 
   def column_win?(symbol)
-    [0, 1, 2].any? { |column| grid.all? { |row| row[column] == symbol } }
+    (0..size).to_a.any? { |column| grid.all? { |row| row[column] == symbol } }
   end
 
   def diagonal_win?(symbol)
