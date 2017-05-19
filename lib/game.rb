@@ -18,12 +18,16 @@ class Game
   end
 
   def play(row, column)
-    board.take_cell(row, column, current_player.symbol)
+    take(row, column)
     if board.wins?(current_player.symbol) || board.full?
       end_game
     else
       switch_player
     end
+  end
+
+  def take(row,column)
+    board.take_cell(row, column, current_player.symbol)
   end
 
   def end_game
